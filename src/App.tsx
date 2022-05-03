@@ -1,18 +1,13 @@
 import styled from "styled-components";
 import { StyledTitle } from "./components/Title/style";
 import CustomSelect from "./components/CustomSelect/CustomSelect";
-import Card from "./components/Card/Card";
-import CardButton from "./components/CardButton/CardButton";
 import SearchInput from "./components/SearchInput/SearchInput";
 import ContainerForm from "./components/AddForm/AddForm";
 import List from "./components/List/List";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useExpensesContext } from "./contex/ExpensesContext/ExpensesContext";
 import { IExpenses } from "./contex/ExpensesContext/types";
-import CardInput from "./components/CardInput/CardInput";
-import { useBudgetContext } from "./contex/BudgetContext/BudgetContext";
-import SaveButton from "./components/SaveButton/SaveButton";
-import { useCurrenciesContext } from "./contex/CurrencyContext/CurrencyContext";
+import CardContainer from "./components/CardContainer/CardContainer";
 
 const App = () => {
   const { expenses } = useExpensesContext();
@@ -38,49 +33,6 @@ const App = () => {
       )
     );
   }, [expenses, searchValue]);
-  const { currencies } = useCurrenciesContext();
-
-  const { budget, setBudget } = useBudgetContext();
-  const [spent, setSpent] = useState<number>(0);
-  const [remaining, setRemaining] = useState<number>(0);
-
-  const [isEdit, setIsEdit] = useState<boolean>(false);
-
-  const handleEditButton = () => {
-    setIsEdit(!isEdit);
-  };
-
-  const [inputValue, setInputValue] = useState<number>(0);
-
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(+e.target.value);
-  };
-
-  const handleSaveButton = () => {
-    setIsEdit(!isEdit);
-    setBudget(inputValue);
-  };
-  const [overspent, setOverspent] = useState<number>(0);
-
-  useEffect(() => {
-    const sum = expenses.reduce((acc, expense) => acc + expense.cost, 0);
-    setSpent(sum);
-    setRemaining(budget - sum);
-
-    if (sum > budget) {
-      setOverspent(sum - budget);
-    }
-  }, [budget, expenses]);
-
-  const [type, setType] = useState<string>("remaining");
-
-  useEffect(() => {
-    if (spent > budget) {
-      setType("overspending");
-    } else {
-      setType("remaining");
-    }
-  }, [spent, budget]);
 
   return (
     <StyledApp>
@@ -89,29 +41,7 @@ const App = () => {
           <StyledTitle>Budget App </StyledTitle>
           <CustomSelect />
         </Header>
-        <CardContainer>
-          <Card isEdit type="budget">
-            {isEdit ? (
-              <CardInput handleInput={handleInput} />
-            ) : (
-              `Budget: ${currencies}${budget}`
-            )}
-            {isEdit ? (
-              <SaveButton handleSaveButton={handleSaveButton}>Save</SaveButton>
-            ) : (
-              <CardButton handleEditButton={handleEditButton}>Edit</CardButton>
-            )}
-          </Card>
-          <Card type={type}>
-            {type === "remaining"
-              ? `Remaining: ${currencies}${remaining}`
-              : `Overspending by ${currencies}${overspent}`}
-          </Card>
-          <Card type="spent">
-            Spent so far: {currencies}
-            {spent}
-          </Card>
-        </CardContainer>
+        <CardContainer />
       </Container>
       <Container>
         <StyledTitle>Expenses</StyledTitle>
@@ -152,9 +82,4 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  gap: 20px;
 `;
