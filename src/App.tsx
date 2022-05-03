@@ -7,12 +7,12 @@ import SearchInput from "./components/SearchInput/SearchInput";
 import ContainerForm from "./components/AddForm/AddForm";
 import List from "./components/List/List";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useExpensesContext } from "./context/ExpensesContext/ExpensesContext";
-import { IExpenses } from "./context/ExpensesContext/types";
+import { useExpensesContext } from "./contex/ExpensesContext/ExpensesContext";
+import { IExpenses } from "./contex/ExpensesContext/types";
 import CardInput from "./components/CardInput/CardInput";
+import { useBudgetContext } from "./contex/BudgetContext/BudgetContext";
 import SaveButton from "./components/SaveButton/SaveButton";
-import { useBudgetContext } from "./context/BudgetContext/BudgetContext";
-import { useCurrenciesContext } from "./context/CurrencyContext/CurrencyContext";
+import { useCurrenciesContext } from "./contex/CurrencyContext/CurrencyContext";
 
 const App = () => {
   const { expenses } = useExpensesContext();
@@ -38,7 +38,6 @@ const App = () => {
       )
     );
   }, [expenses, searchValue]);
-
   const { currencies } = useCurrenciesContext();
 
   const { budget, setBudget } = useBudgetContext();
