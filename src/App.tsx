@@ -5,8 +5,8 @@ import SearchInput from "./components/SearchInput/SearchInput";
 import ContainerForm from "./components/AddForm/AddForm";
 import List from "./components/List/List";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useExpensesContext } from "./contex/ExpensesContext/ExpensesContext";
-import { IExpenses } from "./contex/ExpensesContext/types";
+import { useExpensesContext } from "./context/ExpensesContext/ExpensesContext";
+import { IExpenses } from "./context/ExpensesContext/types";
 import CardContainer from "./components/CardContainer/CardContainer";
 
 const App = () => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import { IOption } from "../../types";
 import { Currency } from "../../config/Currency";
-import { useCurrenciesContext } from "../../contex/CurrencyContext/CurrencyContext";
+import { useCurrenciesContext } from "../../context/CurrencyContext/CurrencyContext";
 
 const CustomSelect = () => {
   const options: IOption[] = [

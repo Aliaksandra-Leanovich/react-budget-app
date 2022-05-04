@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useBudgetContext } from "../../contex/BudgetContext/BudgetContext";
-import { useCurrenciesContext } from "../../contex/CurrencyContext/CurrencyContext";
-import { useExpensesContext } from "../../contex/ExpensesContext/ExpensesContext";
+import { useBudgetContext } from "../../context/BudgetContext/BudgetContext";
+import { useCurrenciesContext } from "../../context/CurrencyContext/CurrencyContext";
+import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 import Card from "../Card/Card";
 import CardButton from "../CardButton/CardButton";
 import CardInput from "../CardInput/CardInput";

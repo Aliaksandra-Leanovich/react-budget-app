@@ -1,5 +1,5 @@
-import { useExpensesContext } from "../../contex/ExpensesContext/ExpensesContext";
-import { IExpenses } from "../../contex/ExpensesContext/types";
+import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
+import { IExpenses } from "../../context/ExpensesContext/types";
 import { Badge } from "../Badge/Badge";
 import Close from "../Close/Close";
 import { StyledListItem } from "./style";

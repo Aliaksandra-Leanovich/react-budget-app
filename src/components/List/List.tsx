@@ -1,4 +1,4 @@
-import { IExpenses } from "../../contex/ExpensesContext/types";
+import { IExpenses } from "../../context/ExpensesContext/types";
 import ListItem from "../ListItem/ListItem";
 import { StyledEmpty, StyledList } from "./style";
 

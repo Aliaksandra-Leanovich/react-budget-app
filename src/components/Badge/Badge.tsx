@@ -1,4 +1,4 @@
-import { useCurrenciesContext } from "../../contex/CurrencyContext/CurrencyContext";
+import { useCurrenciesContext } from "../../context/CurrencyContext/CurrencyContext";
 import { StyledBadge } from "./style";
 
 interface ICost {
