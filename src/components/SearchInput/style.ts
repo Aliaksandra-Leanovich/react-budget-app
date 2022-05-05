@@ -4,6 +4,7 @@ const StyledInput = styled.input`
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 20px;
+  width: 100%;
 
   font-weight: 400;
   font-size: 16px;

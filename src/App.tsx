@@ -1,39 +1,11 @@
 import styled from "styled-components";
 import { StyledTitle } from "./components/Title/style";
 import CustomSelect from "./components/CustomSelect/CustomSelect";
-import SearchInput from "./components/SearchInput/SearchInput";
 import ContainerForm from "./components/AddForm/AddForm";
 import List from "./components/List/List";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useExpensesContext } from "./context/ExpensesContext/ExpensesContext";
-import { IExpenses } from "./context/ExpensesContext/types";
 import CardContainer from "./components/CardContainer/CardContainer";
 
 const App = () => {
-  const { expenses } = useExpensesContext();
-
-  const [filteredExpenses, setFilteredExpenses] =
-    useState<IExpenses[]>(expenses);
-  const [searchValue, setSearchValue] = useState<string>("");
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-    setFilteredExpenses(
-      expenses.filter((expense) =>
-        expense.name.toLowerCase().includes(e.target.value.toLowerCase())
-      )
-    );
-  };
-
-  useEffect(() => {
-    const filteredExpenses = expenses;
-    setFilteredExpenses(
-      filteredExpenses.filter((expense) =>
-        expense.name.toLowerCase().includes(searchValue.toLowerCase())
-      )
-    );
-  }, [expenses, searchValue]);
-
   return (
     <StyledApp>
       <Container>
@@ -45,8 +17,7 @@ const App = () => {
       </Container>
       <Container>
         <StyledTitle>Expenses</StyledTitle>
-        <SearchInput searchValue={searchValue} handleSearch={handleSearch} />
-        <List filteredExpenses={filteredExpenses} />
+        <List />
       </Container>
       <Container>
         <StyledTitle>Add Expenses</StyledTitle>
