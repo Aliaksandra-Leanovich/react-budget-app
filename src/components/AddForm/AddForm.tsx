@@ -16,7 +16,7 @@ const AddForm = () => {
   const onSubmit: SubmitHandler<FormValues> = (expense) => {
     setExpenses([
       ...expenses,
-      { id: uuidv4(), name: expense.name, cost: +expense.cost },
+      { id: uuidv4(), name: expense.name, cost: Number(expense.cost) },
     ]);
     reset();
   };

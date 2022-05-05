@@ -24,7 +24,7 @@ const CardContainer = () => {
   };
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(+e.target.value);
+    setInputValue(Number(e.target.value));
   };
 
   const handleSaveButton = () => {
